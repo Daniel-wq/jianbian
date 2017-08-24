@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+				background: url(images/25.jpg) repeat-y center;
+			}
+			#box{
+				width: 610px;
+				margin: 5px auto;
+				/*border: 2px solid darkblue;*/
+			}
+			#btn{
+				width: 300px;
+				height: 60px;
+				background: deeppink;
+				box-shadow: 3px 3px 5px deepskyblue;
+			}
+			#btn1{
+				width: 300px;
+				height: 60px;
+				background: deepskyblue;
+				box-shadow: 3px 3px 5px deeppink;
+			}
+			#d1{
+			width:400px;
+			height:400px;
+			background: -webkit-linear-gradient(bottom right,pink,yellow,green,red,blue);
+			position: absolute;
+			top: 150px;
+			left: 200px;
+			}
+			#d2{
+			width:400px;
+			height:400px;
+			background: -webkit-linear-gradient(top right,pink,yellow,green,red,blue);
+			float: left;
+			position: absolute;
+			top: 150px;
+			left: 760px;
+			}
+		</style>
+		<script type="text/javascript">
+			
+			$(function(){
+				var num = 0;
+				var num1 = 0;
+				var timer; 
+				var timer1;
+				function run(){
+						num++;
+						if (num==360) {
+							num=0
+						}
+						
+						$('#d1').css({'transform':'rotate('+num*1.5+'deg)'});
+						
+					}
+					function run1(){
+						num1--;
+						if (num1==-360) {
+							num1=0
+						}
+						
+						$('#d2').css({'transform':'rotate('+num1*1.5+'deg)'});
+					}
+				$('#btn').click(function(){
+					clearInterval(timer);
+					clearInterval(timer1);
+					timer = setInterval(run,1);
+					timer1 = setInterval(run1,1);
+				})
+				
+				$('#btn1').click(function(){
+					$('#d1').css({'transform':'rotate('+0+'deg)'});
+					$('#d2').css({'transform':'rotate('+0+'deg)'});
+					clearInterval(timer);
+					clearInterval(timer1);
+					
+					
+					
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<input type="button" id="btn" value="开始转动" />
+			<input type="button" id="btn1" value="恢复初始" />
+		</div>
+		
+		<div id="d1"></div>
+		<div id="d2"></div>
+	</body>
+</html>
